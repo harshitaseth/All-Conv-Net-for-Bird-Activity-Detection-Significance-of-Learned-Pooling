@@ -72,8 +72,8 @@ model.summary()
 
 #train_data
 classes = 2
-feature = np.load('/home/birds/arjun/bad/feature_file_train.npy')
-label = np.load('/home/birds/arjun/bad/label_file_train.npy')
+feature = np.load('/feature_file_train.npy')
+label = np.load('/label_file_train.npy')
 label = to_categorical(label, 2)
 opt = Adam(decay = 1e-6)
 x_train, x_test, y_train, y_test = train_test_split(feature, label, test_size=0.00, shuffle=True) # assign validation if needed
@@ -88,8 +88,8 @@ hist = model.fit(x_train, y_train, epochs=50, batch_size=32,verbose=2)
 model.save('all_convnet_BAD.h5') 
 
 #test_data
-test_class_file = np.loadtxt('/home/birds/arjun/bad/test_class_file.txt',dtype='str')
-test_data = np.load('/home/birds/arjun/bad/feature_file_test.npy')
+test_class_file = np.loadtxt('test_class_file.txt',dtype='str')
+test_data = np.load('feature_file_test.npy')
 
 #test_label_predict
 clas_labels = model.predict_classes(test_data, batch_size=1, verbose=0)
